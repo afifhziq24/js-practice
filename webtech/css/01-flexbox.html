@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>flexbox</title>
+    <style>
+        .container {
+            display: flex;
+            height: 400px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .box {
+            background-color: blue;
+            border-radius: 5px;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
-    
+    <!--
+    A div container with three child divs inside.
+        The container uses Flexbox
+        Children are spaced evenly with equal gaps between them (not on the outer edges)
+        Children are vertically centered within the container
+        Container is 400px tall
+        Each child is 100px × 100px with a visible background color (pick any)-->
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
 </body>
 </html>
