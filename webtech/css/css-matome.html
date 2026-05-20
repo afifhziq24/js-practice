@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まとめ練習</title>
+    <style>
+        :root {
+            --accent-color: #3489db;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            position: relative;
+            width: 300px;
+            border: 2px solid #666;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+        }
+        h2 {
+            color: var(--accent-color);
+        }
+        .btn {
+            border: 0;
+            border-radius: 5px;
+            padding: 3px;
+            background-color: var(--accent-color);
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="badge"></div>
+        <h2>Afif</h2>
+        <p>Student</p>
+        <button class="btn">button</button>
+    </div>
+</body>
+</html>
