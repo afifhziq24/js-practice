@@ -18,6 +18,13 @@
             width: 100px;
             height: 100px;
         }
+        /* 画面のサイズが７６８px以下になると、.containerのflex-directionと背景の色が変わる */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                background-color: purple;
+            }
+        } 
     </style>
 </head>
 <body>
