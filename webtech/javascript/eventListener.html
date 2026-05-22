@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+</head>
+<body>
+    <button></button>
+    <span id="count">0</span>
+    <script>
+        const btn = document.querySelector("button");
+        let span = document.getElementById("count");
+        let count = 0
+        btn.addEventListener('click', function (){
+            span.textContent = ++count;
+        })
+    </script>
+</body>
+</html>

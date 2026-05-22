@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Traversal</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        const ul = document.querySelector("ul");
+        ul.addEventListener("click", function(event) {
+            const li = event.target;
+            console.log(li.textContent);
+            console.log(li.parentElement.tagName);
+            if (li.nextElementSibling !== null) {
+                console.log(li.nextElementSibling.textContent);
+            }
+            else {
+                console.log("なし");
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+</head>
+<body>
+    <ul id="menu">
+        <li>rice</li>
+        <li>chicken</li>
+        <li>fish</li>
+    </ul>
+    <script>
+        const ul = document.getElementById("menu");
+        ul.addEventListener("click", function(event) {
+            alert(event.target.textContent);
+        })
+        // イベント委譲の利点： liを一つ一つ操作するよりも親のulにイベント委譲により操作が効率的だと思います;
+    </script>
+    
+</body>
+</html>

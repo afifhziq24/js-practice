@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Events</title>
+</head>
+<body>
+    <input type="text" id="search">
+    <p id="preview"></p>
+    <script>
+        const search = document.getElementById("search");
+        const preview = document.getElementById("preview");
+        search.addEventListener("input", function(event) {
+            if (event.target.value !== "") {
+                preview.textContent = event.target.value;
+            }
+            else {
+                preview.textContent = "入力してください";
+            }
+        })
+    </script>
+</body>
+</html>
