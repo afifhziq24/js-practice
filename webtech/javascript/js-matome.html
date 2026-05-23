@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSまとめ練習</title>
+    <style>
+        .done {
+            text-decoration: line-through;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <!--TODOリスト-->
+    <input type="text" id="task">
+    <button id="add">Add</button>
+    <ul id="list"></ul>
+    <script>
+        const add = document.getElementById("add")
+        const list = document.getElementById("list")
+        const input = document.getElementById("task")
+
+        add.addEventListener("click", function() {
+            if (input.value !== "") {
+                const li = document.createElement("li");
+                li.textContent = input.value;
+                list.appendChild(li);
+                input.value = "";
+            } else {
+                alert("タスクを入力してください");
+            }
+        })
+
+        list.addEventListener("click", function(event) {
+            event.target.classList.toggle("done");
+        })
+    </script>
+    <!--
+    Bug 1 — .val() はjQueryのみ
+    バニラJSでinputの値を取得するには .value を使う。.val() はjQueryの書き方。
+    ❌ input.val() → ✅ input.value
+    Bug 2 — createElement は document のメソッド
+    要素を作るのは document.createElement()。特定の要素（listなど）に対して呼び出すことはできない。
+    ❌ list.createElement("li") → ✅ document.createElement("li")
+    Bug 3 — inputのクリアの方法
+    inputを空にするには .value = "" で代入する。.clear というプロパティは存在しない。
+    ❌ input.val().clear → ✅ input.value = ""
+    Bug 4 — 空文字チェックの条件
+    空のinputの値は null ではなく ""（空文字）。null チェックでは空入力を検知できない。
+    ❌ !== null → ✅ !== ""
+    Bug 5 — イベント委譲で event.target を使う
+    list.classList.toggle() はul自体にクラスを付ける。クリックされたliに付けるには event.target が必要。
+    ❌ list.classList.toggle() → ✅ event.target.classList.toggle()
+    Bug 6 — classList にドットは不要
+    classList.toggle() にはクラス名だけを渡す。CSSセレクタ記法（ドット付き）は使わない。
+    ❌ classList.toggle(".done") → ✅ classList.toggle("done")
+    -->
+</body>
+</html>
