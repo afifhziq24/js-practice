@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSまとめ練習3</title>
+</head>
+<body>
+    <!--Live search filter-->
+    <input type="text" id="search">
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Mango</li>
+        <li>Strawberry</li>
+        <li>Grape</li>
+    </ul>
+    <script>
+        const search = document.getElementById("search");
+        const fruits = document.getElementById("fruits");
+        const li = document.querySelectorAll("li");
+
+        search.addEventListener("input", function(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            li.forEach(function(item) {
+                if (item.textContent.toLowerCase().includes(searchTerm)) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none"
+                }
+        });
+        })
+        
+    </script>
+</body>
+</html>
