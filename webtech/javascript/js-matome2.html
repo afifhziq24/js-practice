@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSまとめ練習2</title>
+</head>
+<body>
+    <!--Colour Note Board-->
+    <input type="text" id="note">
+    <button id="add">Add</button>
+    <div id="board"></div>
+    <script>
+        const add = document.getElementById("add");
+        const noteInput = document.getElementById("note");
+        const board = document.getElementById("board");
+        const colors = ["#f9ca24","#6ab04c","#e17055","#74b9ff"];
+
+        add.addEventListener("click", function() {
+            if (noteInput.value !== "") {
+                const newDiv = document.createElement("div");
+                newDiv.textContent = noteInput.value;
+                newDiv.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                board.append(newDiv);
+                noteInput.value = "";
+            } else {
+                alert("メモを入力してください");
+            }
+        });
+        board.addEventListener("click", function(event) {
+            event.target.remove();
+        })
+    </script>
+</body>
+</html>
