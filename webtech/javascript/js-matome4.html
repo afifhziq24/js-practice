@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSまとめ練習4</title>
+</head>
+<body>
+    <!--simple scoreboard-->
+    <div class="player1">
+        <h2>Player 1</h2>
+        <span id="score1">0</span>
+        <button class="add1 player1">+1</button>
+        <button class="subtract1 player1">-1</button>
+    </div>
+    <div class="player2">
+        <h2>Player 2</h2>
+        <span id="score2">0</span>
+        <button class="add2 player2">+1</button>
+        <button class="subtract2 player2">-1</button>
+    </div>
+    <p id="winner"></p>
+    <script>
+        const btn_add1 = document.querySelector(".add1");
+        const btn_sub1 = document.querySelector(".subtract1");
+        const btn_add2 = document.querySelector(".add2");
+        const btn_sub2 = document.querySelector(".subtract2");
+
+        const span1 = document.getElementById("score1");
+        const span2 = document.getElementById("score2");
+
+        let score1 = 0;
+        let score2 = 0;
+
+        const winner = document.getElementById("winner");
+
+        btn_add1.addEventListener("click", function() {
+            score1++;
+            updateDisplay();
+        });
+        btn_sub1.addEventListener("click", function() {
+            if (score1 > 0) {
+                score1--;
+                updateDisplay();
+            } else {
+                score1 = 0;
+            }
+        });
+        btn_add2.addEventListener("click", function() {
+            score2++;
+            updateDisplay();
+        });
+        btn_sub2.addEventListener("click", function() {
+            if (score2 > 0) {
+                score2--;
+                updateDisplay();
+            } else {
+                score2 = 0;
+            }
+        });
+
+        function updateDisplay() {
+            span1.textContent = score1;
+            span2.textContent = score2;
+
+            if (score1 > score2) {
+                winner.textContent = "Player 1 が勝っています";
+            } else if (score1 === score2) {
+                winner.textContent = "引き分け";
+            } else {
+                winner.textContent = "Player 2 が勝っています";
+            }
+        }
+    </script>
+</body>
+</html>
