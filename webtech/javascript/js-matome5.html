@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown timer</title>
+</head>
+<body>
+    <p id="display">10</p>
+    <button id="start">Start</button>
+    <button id="reset">Reset</button>
+    <script>
+        const display = document.getElementById("display");
+        const btn_start = document.getElementById("start");
+        const btn_reset = document.getElementById("reset");
+
+        let count = 10;
+        let timer = null
+
+        btn_start.addEventListener("click", function() {
+            if (timer) {
+                
+            } else {
+                timer = setInterval(function() {
+                    if (count !== 0) {
+                        count -= 1;
+                        display.textContent = count;
+                    } else {
+                        clearInterval(timer);
+                        timer = null;
+                        display.textContent = "時間切れ！";
+                    }
+                }, 1000);
+            }   
+        });
+        btn_reset.addEventListener("click", function() {
+            clearInterval(timer);
+            count = 10;
+            timer = null;
+            display.textContent = count;
+        });
+    </script>
+</body>
+</html>
