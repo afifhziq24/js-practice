@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character counter</title>
+</head>
+<body>
+    <textarea name="text" id="input"></textarea>
+    <p id="remaining"></p>
+    <script>
+        const remaining = document.getElementById("remaining");
+        const input = document.getElementById("input");
+
+        let count = 150;
+
+        remaining.textContent = count;
+        input.addEventListener("input", function() {
+            count = 150 - input.value.length;
+            remaining.textContent = count;
+            if (count <= 0) {
+                remaining.textContent = 0;
+                remaining.style.color = "red";
+            } else {
+                remaining.style.color = "";
+            }
+        });
+    </script>
+</body>
+</html>
