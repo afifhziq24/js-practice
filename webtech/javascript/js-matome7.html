@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+</head>
+<body>
+    <div style="background-color: blue;">1</div>
+    <div style="background-color: red; display: none;">2</div>
+    <div style="background-color: green; display: none;">3</div>
+    <button id="prev">prev</button>
+    <button id="next">next</button>
+    <p id="indicator"></p>
+    <script>
+        const slides = document.querySelectorAll("div");
+        const btn_prev = document.getElementById("prev");
+        const btn_next = document.getElementById("next");
+        const indicator = document.getElementById("indicator");
+
+        let currentIndex = 0;
+        indicator.textContent = "1/" + slides.length;
+
+        btn_prev.addEventListener("click", function() {
+            slides[currentIndex].style.display = "none";
+            currentIndex = ((currentIndex - 1) + slides.length) % slides.length;
+            slides[currentIndex].style.display = "";
+            indicator.textContent = (currentIndex+1) + "/" + slides.length;
+        });
+        btn_next.addEventListener("click", function() {
+            slides[currentIndex].style.display = "none";
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].style.display = "";
+            indicator.textContent = (currentIndex+1) + "/" + slides.length;
+        });
+    </script>
+</body>
+</html>
