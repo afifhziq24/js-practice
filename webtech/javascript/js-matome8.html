@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag-free Kanban Board</title>
+    <style>
+        .board {
+            display: flex;
+            gap: 20px;
+        }
+        .column {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="board">
+        <div class="column">
+            <h3>To Do</h3>
+            <ul id="todo"></ul>
+            <input type="text" id="todo-input">
+            <button id="todo-add">Add</button>
+        </div>
+        <div class="column">
+            <h3>In Progress</h3>
+            <ul id="progress"></ul>
+            <input type="text" id="progress-input">
+            <button id="progress-add">Add</button>
+        </div>
+        <div class="column">
+            <h3>Done</h3>
+            <ul id="done"></ul>
+            <input type="text" id="done-input">
+            <button id="done-add">Add</button>
+        </div>
+    </div>
+    <script>
+        const column = [
+            document.getElementById("todo"),
+            document.getElementById("progress"),
+            document.getElementById("done")
+        ];
+        const todo_input = document.getElementById("todo-input");
+        const progress_input = document.getElementById("progress-input"); 
+        const done_input = document.getElementById("done-input");
+
+        const btn_todo = document.getElementById("todo-add");
+        const btn_progress = document.getElementById("progress-add");
+        const btn_done = document.getElementById("done-add");
+        
+        btn_todo.addEventListener("click", function() {
+            todo_input.addEventListener("input", function(event) {
+                const li = document.createElement("li");
+                const btnLeft = document.createElement("button");
+                const btnRight = document.createElement("button");
+                btnLeft.textContent = "←";
+                btnRight.textContent = "→";
+                li.textContent = event.target.value;
+                li.appendChild(btnLeft);
+                li.appendChild(btnRight);
+                column[0].appendChild(li);
+            });
+        });
+
+        btn_todo.addEventListener("click", function() {
+            todo_input.addEventListener("input", function(event) {
+                const li = document.createElement("li");
+                const btnLeft = document.createElement("button");
+                const btnRight = document.createElement("button");
+                btnLeft.textContent = "←";
+                btnRight.textContent = "→";
+                li.textContent = event.target.value;
+                li.appendChild(btnLeft);
+                li.appendChild(btnRight);
+                column[0].appendChild(li);
+            });
+        });
+
+        btn_todo.addEventListener("click", function() {
+            todo_input.addEventListener("input", function(event) {
+                const li = document.createElement("li");
+                const btnLeft = document.createElement("button");
+                const btnRight = document.createElement("button");
+                btnLeft.textContent = "←";
+                btnRight.textContent = "→";
+                li.textContent = event.target.value;
+                li.appendChild(btnLeft);
+                li.appendChild(btnRight);
+                column[0].appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
