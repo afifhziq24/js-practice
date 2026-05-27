@@ -36,11 +36,13 @@
         </div>
     </div>
     <script>
+        let index = 0;
         const column = [
             document.getElementById("todo"),
             document.getElementById("progress"),
             document.getElementById("done")
         ];
+        
         const todo_input = document.getElementById("todo-input");
         const progress_input = document.getElementById("progress-input"); 
         const done_input = document.getElementById("done-input");
@@ -48,48 +50,42 @@
         const btn_todo = document.getElementById("todo-add");
         const btn_progress = document.getElementById("progress-add");
         const btn_done = document.getElementById("done-add");
+
+        //refactor using createTask()
+        function createTask(input, colIndex) {
+            if (input.value !== "") {
+                const li = document.createElement("li");
+                const btnRight = document.createElement("button");
+                const btnLeft = document.createElement("button");
+
+                li.textContent = input.value;
+                btnLeft.textContent = "←";
+                btnRight.textContent = "→";
+
+                column[colIndex].appendChild(li);
+                li.appendChild(btnLeft);
+                li.appendChild(btnRight);
+
+                input.value = "";
+
+                btnRight.addEventListener("click", function() {
+                    index = column.indexOf(li.parentElement);
+                    if (index !== column.length - 1) {
+                        column[index + 1].appendChild(li);
+                    }
+                });
+                btnLeft.addEventListener("click", function() {
+                    index = column.indexOf(li.parentElement);
+                    if (index !== 0) {
+                        column[index - 1].appendChild(li);
+                    }
+                });
+            }
+        }
         
-        btn_todo.addEventListener("click", function() {
-            todo_input.addEventListener("input", function(event) {
-                const li = document.createElement("li");
-                const btnLeft = document.createElement("button");
-                const btnRight = document.createElement("button");
-                btnLeft.textContent = "←";
-                btnRight.textContent = "→";
-                li.textContent = event.target.value;
-                li.appendChild(btnLeft);
-                li.appendChild(btnRight);
-                column[0].appendChild(li);
-            });
-        });
-
-        btn_todo.addEventListener("click", function() {
-            todo_input.addEventListener("input", function(event) {
-                const li = document.createElement("li");
-                const btnLeft = document.createElement("button");
-                const btnRight = document.createElement("button");
-                btnLeft.textContent = "←";
-                btnRight.textContent = "→";
-                li.textContent = event.target.value;
-                li.appendChild(btnLeft);
-                li.appendChild(btnRight);
-                column[0].appendChild(li);
-            });
-        });
-
-        btn_todo.addEventListener("click", function() {
-            todo_input.addEventListener("input", function(event) {
-                const li = document.createElement("li");
-                const btnLeft = document.createElement("button");
-                const btnRight = document.createElement("button");
-                btnLeft.textContent = "←";
-                btnRight.textContent = "→";
-                li.textContent = event.target.value;
-                li.appendChild(btnLeft);
-                li.appendChild(btnRight);
-                column[0].appendChild(li);
-            });
-        });
+        btn_todo.addEventListener("click", () => createTask(todo_input, 0) );
+        btn_progress.addEventListener("click", () => createTask(progress_input, 1) );
+        btn_done.addEventListener("click", () => createTask(done_input, 2) );
     </script>
 </body>
 </html>
