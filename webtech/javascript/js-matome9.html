@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Note Saver</title>
+</head>
+<body>
+    <textarea name="note" id="note"></textarea>
+    <button id="save">Save</button>
+    <ul id="saved"></ul>
+    <script>
+        const note = document.getElementById("note");
+        const btn_save = document.getElementById("save");
+        const ul = document.getElementById("saved");
+
+        const notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+        for (const Note of notes) {
+            const li = document.createElement("li");
+            const btn_delete = document.createElement("button");
+            li.textContent = Note;
+            btn_delete.textContent = "🗑️";
+            ul.appendChild(li);
+            li.appendChild(btn_delete);
+            btn_delete.addEventListener("click", () => deleteNote(li));
+        }
+        let index = 0;
+
+        function saveNote() {
+            if (note.value !== "") {
+                const li = document.createElement("li");
+                const btn_delete = document.createElement("button");
+                notes.push(note.value);
+                localStorage.setItem("notes", JSON.stringify(notes));
+                li.textContent = notes[notes.length - 1];
+                btn_delete.textContent = "🗑️"
+                ul.appendChild(li);
+                li.appendChild(btn_delete);
+                btn_delete.addEventListener("click", () => deleteNote(li));
+                note.value = "";
+                console.log(notes);
+            }
+        }
+        function deleteNote(li) {
+            const text = li.firstChild.textContent;
+            index = notes.indexOf(text);
+            if (index > -1) {
+                notes.splice(index, 1);
+                localStorage.setItem("notes", JSON.stringify(notes));
+                ul.removeChild(li);
+                console.log(notes);
+            }
+        }
+        btn_save.addEventListener("click", () => saveNote());
+    </script>
+</body>
+</html>
